@@ -4,6 +4,7 @@ import 'package:e_tranzact/ui/auth/controllers/login_controller.dart';
 import 'package:e_tranzact/ui/base/base_screen_standard.dart';
 import 'package:e_tranzact/ui/shared/button_widget.dart';
 import 'package:e_tranzact/ui/shared/text_field_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,17 +33,23 @@ class LoginScreen extends BaseScreenStandard {
           ),
           const SizedBox(height: 20),
           Obx(
-            () => ButtonWidget(
-              title: 'LogIn',
-              onTap: controller.onLoginOnClick,
-              color: controller.isFormValid.value
-                  ? Colors.tealAccent
-                  : Colors.black12,
-              textStyle: AppTextStyles.description.copyWith(
-                color:
-                    controller.isFormValid.value ? Colors.white : Colors.black,
-              ),
-            ),
+            () => controller.isMakingNetworkRequest.value
+                ? CupertinoActivityIndicator(
+                    animating: true,
+                    radius: 30,
+                  )
+                : ButtonWidget(
+                    title: 'LogIn',
+                    onTap: controller.onLoginOnClick,
+                    color: controller.isFormValid.value
+                        ? Colors.tealAccent
+                        : Colors.black12,
+                    textStyle: AppTextStyles.description.copyWith(
+                      color: controller.isFormValid.value
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                  ),
           ),
           const SizedBox(height: 20),
           ButtonWidget(

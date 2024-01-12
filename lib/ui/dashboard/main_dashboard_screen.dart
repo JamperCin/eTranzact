@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class MainDashBoardScreen extends BaseScreenStandard {
   @override
   Widget body(BuildContext context) {
-    // TODO: implement body
     return super.body(context);
   }
 }
